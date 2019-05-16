@@ -1,3 +1,26 @@
+"""
+Creator: Fox3455
+======To Do======
+This is the To Do list.
+I will cross things off as
+they are completed
+
+To Add
+-----------------
+Add backup feature
+Change status to reflect last backup
+Add feature to start backup from discord
+-----------------
+
+Added
+-----------------
+Ping the server and print alive or dead
+Describe what the bot is for
+Changed the activity status to listening
+-----------------
+=================
+"""
+
 import logging
 logging.basicConfig(level=logging.INFO)
 import discord
