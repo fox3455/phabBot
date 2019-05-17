@@ -29,8 +29,11 @@ import asyncio
 import os
 import socket
 import sys
+import subprocess
+import psutils
 
 website = "IP_OR_WEBDOMAIN"
+backup = 0
 des = "I check to see if the Phabricator server is online or not! Please type ping to check."
 prefix = "!"
 token = ""
@@ -46,7 +49,7 @@ async def on_ready():
 async def who(ctx):
     await ctx.send(des)
 
-@client.command()    
+@client.command()
 async def ping(ctx):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     rep = os.system('ping ' + website)
@@ -54,5 +57,16 @@ async def ping(ctx):
         await ctx.send('Phabricator is up!')
     else:
         await ctx.send('Phabricator is down!')
+
+@client.command()
+async def launchBackUp(ctx):
+    await ctx.send('feature not ready.')
+    '''if backup == 0 :
+        proc = subprocess.Popen(['PATH_TO_PROGRAM'], shell=True)
+        psutil.Process(proc.pid)
+        await ctx.send('Backup server is online and running.')
+        backup = 1
+    else:
+        await ctx.send('Backup server already online.')'''
 
 client.run("token")
