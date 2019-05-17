@@ -30,7 +30,7 @@ import os
 import socket
 import sys
 import subprocess
-import psutils
+import psutil
 
 website = "IP_OR_WEBDOMAIN"
 backup = 0
@@ -59,7 +59,7 @@ async def ping(ctx):
         await ctx.send('Phabricator is down!')
 
 @client.command()
-async def launchBackUp(ctx):
+async def startBackup(ctx):
     await ctx.send('feature not ready.')
     '''if backup == 0 :
         proc = subprocess.Popen(['PATH_TO_PROGRAM'], shell=True)
