@@ -9,7 +9,6 @@ To Add
 -----------------
 Add backup feature
 Change status to reflect last backup
-Add feature to start backup from discord
 -----------------
 
 Added
@@ -17,6 +16,7 @@ Added
 Ping the server and print alive or dead
 Describe what the bot is for
 Changed the activity status to listening
+Add feature to start backup from discord
 -----------------
 =================
 """
@@ -34,6 +34,7 @@ import psutil
 
 website = "IP_OR_WEBDOMAIN"
 backup = 0
+backupO = 0
 des = "I check to see if the Phabricator server is online or not! Please type ping to check."
 prefix = "!"
 token = ""
@@ -61,7 +62,8 @@ async def ping(ctx):
 @client.command()
 async def startBackup(ctx):
     await ctx.send('feature not ready.')
-    '''if backup == 0 :
+    ''' global backup
+        if backup == 0 :
         proc = subprocess.Popen(['PATH_TO_PROGRAM'], shell=True)
         psutil.Process(proc.pid)
         await ctx.send('Backup server is online and running.')
@@ -69,4 +71,17 @@ async def startBackup(ctx):
     else:
         await ctx.send('Backup server already online.')'''
 
-client.run("token")
+@client.command()
+async def stopBackup(ctx):
+    global backup
+    if backup == 1 :
+        for i in backupO.children(recursive = True):
+            c.kill()
+        backupO.kill()
+        await ctx.send('Backup server shutdown.')
+        backup = 0
+    else:
+        await ctx.send('Backup server already offline.')
+
+
+client.run(token)
